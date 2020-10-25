@@ -29,32 +29,27 @@ jobs:
       - name: Build api image
         uses: docker/build-push-action@v2
         with:
-          username: ${{ github.actor }}
-          registry: docker.pkg.github.com
-          repository: jonaskay/boardgame-inventory/api-image
-          tag_with_ref: true
+          context: ./api
+          push: true
+          tags: ghcr.io/jonaskay/boardgame-inventory/api:latest
       - name: Build client image
         uses: docker/build-push-action@v2
         with:
-          username: ${{ github.actor }}
-          registry: docker.pkg.github.com
-          repository: jonaskay/boardgame-inventory/client-image
-          tag_with_ref: true
+          context: ./client
+          push: true
+          tags: ghcr.io/jonaskay/boardgame-inventory/client:latest
       - name: Build proxy image
         uses: docker/build-push-action@v2
         with:
-          username: ${{ github.actor }}
-          registry: docker.pkg.github.com
-          repository: jonaskay/boardgame-inventory/proxy-image
-          tag_with_ref: true
+          context: ./proxy
+          push: true
+          tags: ghcr.io/jonaskay/boardgame-inventory/proxy:latest
       - name: Build test image
         uses: docker/build-push-action@v2
         with:
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-          registry: docker.pkg.github.com
-          repository: jonaskay/boardgame-inventory/test-image
-          tag_with_ref: true
+          context: ./test
+          push: true
+          tags: ghcr.io/jonaskay/boardgame-inventory/test:latest
       # - name: Build containers
       #   run: docker-compose -f docker-compose.ci.yml up -d
       # - name: Run end to end tests
