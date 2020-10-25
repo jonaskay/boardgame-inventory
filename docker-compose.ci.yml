@@ -16,7 +16,7 @@ services:
       - /app/node_modules
       - ./client:/app
     environment:
-      - REACT_APP_API_BASE_URL=localhost:8080
+      - REACT_APP_API_BASE_URL=proxy
   proxy:
     restart: always
     build:
@@ -27,3 +27,14 @@ services:
     depends_on:
       - api
       - client
+  test:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./test
+    volumes:
+      - /app/node_modules
+      - ./test:/app
+    depends_on:
+      - api
+      - client
+      - proxy

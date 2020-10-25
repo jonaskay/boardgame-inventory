@@ -6,6 +6,6 @@
     "cypress": "^5.4.0"
   },
   "scripts": {
-    "start": "cypress run --no-exit"
+    "start": "cypress run"
   }
 }
