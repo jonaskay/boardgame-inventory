@@ -31,3 +31,8 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+      - name: Build containers
+        run: docker-compose -f docker-compose.ci.yml up -d
+      - name: Run end to end tests
+        run: docker-compose run --rm test yarn start
+
