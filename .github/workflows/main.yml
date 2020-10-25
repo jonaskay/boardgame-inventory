@@ -34,5 +34,4 @@ jobs:
       - name: Build containers
         run: docker-compose -f docker-compose.ci.yml up -d
       - name: Run end to end tests
-        run: docker-compose run --rm test yarn start
-
+        run: docker-compose -f docker-compose.ci.yml run --rm test yarn start
