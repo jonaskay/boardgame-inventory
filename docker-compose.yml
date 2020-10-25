@@ -1,0 +1,38 @@
+version: "3"
+services:
+  api:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./api
+    volumes:
+      - /app/node_modules
+      - /app/dist
+      - ./api:/app
+  client:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./client
+    volumes:
+      - /app/node_modules
+      - ./client:/app
+  proxy:
+    restart: always
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./proxy
+    ports:
+      - "8080:80"
+    depends_on:
+      - api
+      - client
+  test:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./test
+    volumes:
+      - /app/node_modules
+      - ./test:/app
+    depends_on:
+      - api
+      - client
+      - proxy
