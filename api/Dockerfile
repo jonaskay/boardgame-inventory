@@ -1,7 +1,7 @@
 FROM node:lts-alpine
 WORKDIR /app
-COPY ./package.json ./
-COPY ./yarn.lock ./
+COPY ./api/package.json ./
+COPY ./api/yarn.lock ./
 RUN yarn install
 COPY . ./
 RUN yarn build
