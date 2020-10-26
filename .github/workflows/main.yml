@@ -58,7 +58,7 @@ jobs:
           file: ./test/Dockerfile
           push: true
           tags: ghcr.io/jonaskay/boardgame-inventory/test:latest
-      # - name: Build containers
-      #   run: docker-compose -f docker-compose.ci.yml up -d
-      # - name: Run end to end tests
-      #   run: docker-compose -f docker-compose.ci.yml run --rm test yarn start
+      - name: Start services
+        run: docker-compose -f docker-compose.ci.yml up -d
+      - name: Run end to end tests
+        run: docker-compose -f docker-compose.ci.yml run --rm test yarn start

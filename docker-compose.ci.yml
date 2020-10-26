@@ -1,39 +1,21 @@
 version: "3"
 services:
   api:
-    build:
-      dockerfile: Dockerfile.dev
-      context: ./api
-    volumes:
-      - /app/node_modules
-      - /app/dist
-      - ./api:/app
+    image: ghcr.io/jonaskay/boardgame-inventory/api:latest
   client:
-    build:
-      dockerfile: Dockerfile.dev
-      context: ./client
-    volumes:
-      - /app/node_modules
-      - ./client:/app
+    image: ghcr.io/jonaskay/boardgame-inventory/client:latest
     environment:
       - REACT_APP_API_BASE_URL=proxy
   proxy:
     restart: always
-    build:
-      dockerfile: Dockerfile.dev
-      context: ./proxy
+    image: ghcr.io/jonaskay/boardgame-inventory/proxy:latest
     ports:
       - "8080:80"
     depends_on:
       - api
       - client
   test:
-    build:
-      dockerfile: Dockerfile.dev
-      context: ./test
-    volumes:
-      - /app/node_modules
-      - ./test:/app
+    image: ghcr.io/jonaskay/boardgame-inventory/test:latest
     depends_on:
       - api
       - client
