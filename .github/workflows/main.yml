@@ -40,18 +40,21 @@ jobs:
       - name: Build client image
         uses: docker/build-push-action@v2
         with:
+          context: ./client
           file: ./client/Dockerfile
           push: true
           tags: ghcr.io/jonaskay/boardgame-inventory/client:latest
       - name: Build proxy image
         uses: docker/build-push-action@v2
         with:
+          context: ./proxy
           file: ./proxy/Dockerfile
           push: true
           tags: ghcr.io/jonaskay/boardgame-inventory/proxy:latest
       - name: Build test image
         uses: docker/build-push-action@v2
         with:
+          context: ./test
           file: ./test/Dockerfile
           push: true
           tags: ghcr.io/jonaskay/boardgame-inventory/test:latest
