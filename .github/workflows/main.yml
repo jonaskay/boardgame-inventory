@@ -88,7 +88,8 @@ jobs:
         run: docker run -v ${{ github.workspace }}/build:/github/workspace/build ghcr.io/jonaskay/boardgame-inventory/client:latest yarn build
       - name: Build client again
         run: docker run -v ${{ github.workspace }}/build:/app/build ghcr.io/jonaskay/boardgame-inventory/client:latest yarn build
-      - run: ls /client
+      - run: pwd
+      - run: ls client
       - name: Deploy to Firebase Hosting
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
