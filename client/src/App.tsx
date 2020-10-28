@@ -27,7 +27,9 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>{error === null ? message : (error as any).message}</p>
+        {!!isLoading && (
+          <p>{error === null ? message : (error as any).message}</p>
+        )}
         <a
           className="App-link"
           href="https://reactjs.org"
