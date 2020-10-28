@@ -74,22 +74,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      # - name: Install Dependencies
-      #   run: cd client && yarn
-      # - name: Build
-      #   run: cd client && yarn build
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v1
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-      # - name: Build client
-      #   run: docker run -v ${{ github.workspace }}/client/build:/github/workspace/build ghcr.io/jonaskay/boardgame-inventory/client:latest yarn build
       - name: Build client
         run: docker run -v ${{ github.workspace }}/client/build:/app/build ghcr.io/jonaskay/boardgame-inventory/client:latest yarn build
-      - run: pwd
-      - run: ls client
       - name: Deploy to Firebase Hosting
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
