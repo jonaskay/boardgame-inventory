@@ -10,7 +10,7 @@ services:
       - ./api:/app
   client:
     build:
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
       context: ./client
     volumes:
       - /app/node_modules
@@ -20,7 +20,7 @@ services:
   proxy:
     restart: always
     build:
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
       context: ./proxy
     ports:
       - "8080:80"
