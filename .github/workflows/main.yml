@@ -81,7 +81,7 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
       - name: Build client
-        run: docker run -v $PWD/build:/app/build ghcr.io/jonaskay/boardgame-inventory/client:latest yarn build
+        run: docker run -v ${{ github.workspace }}/build:/app/build ghcr.io/jonaskay/boardgame-inventory/client:latest yarn build
       - run: ls client
       - name: Deploy to Firebase Hosting
         uses: FirebaseExtended/action-hosting-deploy@v0
