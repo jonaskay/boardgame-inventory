@@ -86,7 +86,7 @@ jobs:
           password: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
       # - name: Build client
       #   run: docker run -v ${{ github.workspace }}/client/build:/github/workspace/build ghcr.io/jonaskay/boardgame-inventory/client:latest yarn build
-      - name: Build client again
+      - name: Build client
         run: docker run -v ${{ github.workspace }}/client/build:/app/build ghcr.io/jonaskay/boardgame-inventory/client:latest yarn build
       - run: pwd
       - run: ls client
