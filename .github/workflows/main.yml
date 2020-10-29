@@ -65,7 +65,7 @@ jobs:
         run: docker-compose -f docker-compose.ci.yml up -d
       - name: Run end to end tests
         run: docker-compose -f docker-compose.ci.yml run --rm test yarn start
-  deploy:
+  deploy-client:
     needs: test
     runs-on: ubuntu-latest
     steps:
@@ -85,3 +85,14 @@ jobs:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_PLANAR_ACRONYM_293718 }}'
           projectId: planar-acronym-293718
           channelId: live
+  deploy-api:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Deploy api
+        uses: GoogleCloudPlatform/github-actions/deploy-cloudrun@master
+        with:
+          image: ghcr.io/jonaskay/boardgame-inventory/api:latest
+          service: boardgame-inventory-api
+          credentials: ${{ secrets.GCP_SA_KEY }}
