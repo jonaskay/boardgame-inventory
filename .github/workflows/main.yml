@@ -121,3 +121,4 @@ jobs:
         with:
           image: eu.gcr.io/jonaskay/boardgame-inventory/api:latest
           service: boardgame-inventory-api
+          region: europe-north1
