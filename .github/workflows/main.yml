@@ -67,6 +67,7 @@ jobs:
           project_id: planar-acronym-293718
           service_account_key: ${{ secrets.GCP_SA_KEY }}
           export_default_credentials: true
+      - run: gcloud info
       - name: Configure docker
         run: gcloud auth configure-docker
       - run: export CLOUDSDK_PYTHON=/usr/bin/python
