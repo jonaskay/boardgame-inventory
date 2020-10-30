@@ -15,6 +15,7 @@ jobs:
       - name: Set up gcloud
         uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
         with:
+          project_id: planar-acronym-293718
           service_account_key: ${{ secrets.GCP_SA_KEY }}
           export_default_credentials: true
       - name: Build and push api image
@@ -26,6 +27,7 @@ jobs:
       - name: Set up gcloud
         uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
         with:
+          project_id: planar-acronym-293718
           service_account_key: ${{ secrets.GCP_SA_KEY }}
           export_default_credentials: true
       - name: Build and push client image
@@ -37,6 +39,7 @@ jobs:
       - name: Set up gcloud
         uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
         with:
+          project_id: planar-acronym-293718
           service_account_key: ${{ secrets.GCP_SA_KEY }}
           export_default_credentials: true
       - name: Build and push proxy image
@@ -48,6 +51,7 @@ jobs:
       - name: Set up gcloud
         uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
         with:
+          project_id: planar-acronym-293718
           service_account_key: ${{ secrets.GCP_SA_KEY }}
           export_default_credentials: true
       - name: Build and push test image
