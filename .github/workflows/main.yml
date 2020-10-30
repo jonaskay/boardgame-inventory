@@ -19,7 +19,7 @@ jobs:
           service_account_key: ${{ secrets.GCP_SA_KEY }}
           export_default_credentials: true
       - name: Build and push api image
-        run: gcloud builds submit ./api/Dockerfile --tag eu.gcr.io/planar-acronym-293718/api
+        run: gcloud builds submit ./api --tag eu.gcr.io/planar-acronym-293718/api
   build-client:
     runs-on: ubuntu-latest
     steps:
@@ -31,7 +31,7 @@ jobs:
           service_account_key: ${{ secrets.GCP_SA_KEY }}
           export_default_credentials: true
       - name: Build and push client image
-        run: gcloud builds submit ./client/Dockerfile --tag eu.gcr.io/planar-acronym-293718/client
+        run: gcloud builds submit ./client --tag eu.gcr.io/planar-acronym-293718/client
   build-proxy:
     runs-on: ubuntu-latest
     steps:
@@ -43,7 +43,7 @@ jobs:
           service_account_key: ${{ secrets.GCP_SA_KEY }}
           export_default_credentials: true
       - name: Build and push proxy image
-        run: gcloud builds submit ./proxy/Dockerfile --tag eu.gcr.io/planar-acronym-293718/proxy
+        run: gcloud builds submit ./proxy --tag eu.gcr.io/planar-acronym-293718/proxy
   build-test:
     runs-on: ubuntu-latest
     steps:
@@ -55,7 +55,7 @@ jobs:
           service_account_key: ${{ secrets.GCP_SA_KEY }}
           export_default_credentials: true
       - name: Build and push test image
-        run: gcloud builds submit ./test/Dockerfile --tag eu.gcr.io/planar-acronym-293718/test
+        run: gcloud builds submit ./test --tag eu.gcr.io/planar-acronym-293718/test
   test:
     needs: [build-api, build-client, build-proxy, build-test]
     runs-on: ubuntu-latest
