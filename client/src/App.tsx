@@ -9,7 +9,7 @@ function App() {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch(`http://${process.env.REACT_APP_API_BASE_URL}/api/v1/hello`)
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/api/v1/hello`)
       .then((res) => res.json())
       .then(
         ({ message }) => {

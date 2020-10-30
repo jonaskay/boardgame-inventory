@@ -5,7 +5,7 @@ services:
   client:
     image: eu.gcr.io/planar-acronym-293718/client:latest
     environment:
-      - REACT_APP_API_BASE_URL=proxy
+      - REACT_APP_API_BASE_URL=http://proxy
   proxy:
     restart: always
     image: eu.gcr.io/planar-acronym-293718/proxy:latest

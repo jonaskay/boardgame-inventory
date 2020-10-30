@@ -92,7 +92,7 @@ jobs:
       - name: Configure docker
         run: gcloud auth configure-docker
       - name: Build client
-        run: docker run -e REACT_APP_API_BASE_URL=planar-acronym-293718.web.app -v ${{ github.workspace }}/client/build:/app/build eu.gcr.io/planar-acronym-293718/client:latest yarn build
+        run: docker run -e REACT_APP_API_BASE_URL=https://planar-acronym-293718.web.app -v ${{ github.workspace }}/client/build:/app/build eu.gcr.io/planar-acronym-293718/client:latest yarn build
       - name: Deploy to Firebase Hosting
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
