@@ -119,6 +119,6 @@ jobs:
       - name: Deploy api
         uses: GoogleCloudPlatform/github-actions/deploy-cloudrun@master
         with:
-          image: eu.gcr.io/jonaskay/boardgame-inventory/api:latest
+          image: eu.gcr.io/planar-acronym-293718/api:latest
           service: boardgame-inventory-api
           region: europe-north1
