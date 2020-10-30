@@ -70,6 +70,7 @@ jobs:
       - name: Configure docker
         run: gcloud auth configure-docker
       - run: export CLOUDSDK_PYTHON=/usr/bin/python
+      - run: export LD_LIBRARY_PATH=/usr/local/lib
       - name: Start services
         run: docker-compose -f docker-compose.ci.yml up -d
       - name: Run end to end tests
