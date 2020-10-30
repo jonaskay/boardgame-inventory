@@ -57,7 +57,7 @@ jobs:
   #     - name: Build and push test image
   #       run: gcloud builds submit ./test --tag eu.gcr.io/planar-acronym-293718/test
   test:
-    needs: [build-api, build-client, build-proxy, build-test]
+    # needs: [build-api, build-client, build-proxy, build-test]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
