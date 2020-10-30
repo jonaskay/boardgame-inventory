@@ -1,21 +1,21 @@
 version: "3"
 services:
   api:
-    image: ghcr.io/jonaskay/boardgame-inventory/api:latest
+    image: eu.gcr.io/jonaskay/boardgame-inventory/api:latest
   client:
-    image: ghcr.io/jonaskay/boardgame-inventory/client:latest
+    image: eu.gcr.io/jonaskay/boardgame-inventory/client:latest
     environment:
       - REACT_APP_API_BASE_URL=proxy
   proxy:
     restart: always
-    image: ghcr.io/jonaskay/boardgame-inventory/proxy:latest
+    image: eu.gcr.io/jonaskay/boardgame-inventory/proxy:latest
     ports:
       - "8080:80"
     depends_on:
       - api
       - client
   test:
-    image: ghcr.io/jonaskay/boardgame-inventory/test:latest
+    image: eu.gcr.io/jonaskay/boardgame-inventory/test:latest
     depends_on:
       - api
       - client
