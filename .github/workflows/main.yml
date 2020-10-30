@@ -121,5 +121,5 @@ jobs:
         uses: GoogleCloudPlatform/github-actions/deploy-cloudrun@master
         with:
           image: eu.gcr.io/planar-acronym-293718/api:latest
-          service: boardgame-inventory-api
+          service: api
           region: europe-north1
