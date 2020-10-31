@@ -27,3 +27,14 @@ services:
     depends_on:
       - api
       - client
+  test:
+    build:
+      dockerfile: Dockerfile
+      context: ./test
+    volumes:
+      - /app/node_modules
+      - ./test:/app
+    depends_on:
+      - api
+      - client
+      - proxy
